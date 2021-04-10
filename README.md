@@ -110,6 +110,14 @@ t.summary()
 | `total` | Property returning the total time across all tasks |
 | `reset()` | Clear all recorded tasks |
 
+
+## Development
+
+```bash
+pip install -e .
+python -m pytest tests/ -v
+```
+
 ## License
 
 MIT
