@@ -6,7 +6,7 @@
 
 Named timers for measuring multiple operations within a function or script.
 
-## Install
+## Installation
 
 ```bash
 pip install philiprehberger-task-timer
