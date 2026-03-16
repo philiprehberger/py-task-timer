@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-task-timer"
-version = "0.1.2"
+version = "0.1.3"
 description = "Named timers for measuring multiple operations within a function or script"
 readme = "README.md"
 license = "MIT"
