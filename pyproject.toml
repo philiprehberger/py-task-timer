@@ -24,9 +24,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/philiprehberger/py-task-timer"
+Homepage = "https://github.com/philiprehberger/py-task-timer#readme"
 Repository = "https://github.com/philiprehberger/py-task-timer"
 Issues = "https://github.com/philiprehberger/py-task-timer/issues"
+Changelog = "https://github.com/philiprehberger/py-task-timer/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_task_timer"]
