@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-task-timer"
-version = "0.1.5"
+version = "0.1.6"
 description = "Named timers for measuring multiple operations within a function or script"
 readme = "README.md"
 license = "MIT"
@@ -31,3 +31,9 @@ Changelog = "https://github.com/philiprehberger/py-task-timer/blob/main/CHANGELO
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_task_timer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
