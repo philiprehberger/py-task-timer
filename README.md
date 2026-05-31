@@ -99,6 +99,23 @@ async with t.task("fetch"):
 t.summary()
 ```
 
+### Extremes and export
+
+Inspect the slowest and fastest recorded tasks, or persist a JSON summary to disk.
+
+```python
+t = TaskTimer()
+with t.task("load"):
+    load()
+with t.task("process"):
+    process()
+
+print(t.slowest())  # ("process", 1.234)
+print(t.fastest())  # ("load", 0.123)
+
+t.export_json("timings.json")
+```
+
 ## API
 
 | Method / Property | Description |
@@ -109,6 +126,9 @@ t.summary()
 | `as_dict()` | Return `dict[str, float]` of task name to seconds |
 | `total` | Property returning the total time across all tasks |
 | `reset()` | Clear all recorded tasks |
+| `slowest()` | Return `(name, duration_ms)` for the slowest task, or `None` if empty |
+| `fastest()` | Return `(name, duration_ms)` for the fastest task, or `None` if empty |
+| `export_json(path)` | Write the `as_dict()` summary as JSON to *path* (creates parent dirs) |
 
 ## Development
 

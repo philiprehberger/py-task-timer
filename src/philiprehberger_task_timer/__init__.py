@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import json
 import sys
 import time
 from contextlib import asynccontextmanager, contextmanager
+from pathlib import Path
 from typing import IO, Any, Generator
 
 __all__ = ["TaskTimer"]
@@ -113,3 +115,25 @@ class TaskTimer:
         self._tasks.clear()
         self._stack.clear()
         self._lap_time = time.perf_counter()
+
+    def slowest(self) -> tuple[str, float] | None:
+        """Return ``(name, duration_ms)`` for the slowest task, or ``None`` if no tasks recorded."""
+        if not self._tasks:
+            return None
+        return max(self._tasks.items(), key=lambda item: item[1])
+
+    def fastest(self) -> tuple[str, float] | None:
+        """Return ``(name, duration_ms)`` for the fastest task, or ``None`` if no tasks recorded."""
+        if not self._tasks:
+            return None
+        return min(self._tasks.items(), key=lambda item: item[1])
+
+    def export_json(self, path: str | Path) -> None:
+        """Write :meth:`as_dict` output as JSON to *path*.
+
+        Parent directories are created. UTF-8 encoded, indent=2.
+        """
+        target = Path(path)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("w", encoding="utf-8") as f:
+            json.dump(self.as_dict(), f, indent=2)
